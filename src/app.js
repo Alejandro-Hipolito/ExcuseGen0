@@ -5,8 +5,8 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload = function() {
-  // 1- Declaro los arrays.
+window.onload = () => {
+  //write your code here
   let who = [
     "The duck",
     "My akward aunt",
@@ -33,28 +33,21 @@ window.onload = function() {
     "during my lunch",
     "while I was praying"
   ];
+  const getRandomElement = myParameter => {
+    let randomElement =
+      myParameter[Math.floor(Math.random() * myParameter.length)];
 
-  // 2- Creo una función tipo flecha que recoja el índice de cada array aleatoriamente y devuelva el índice aleatorio generado.
-  const excuseGen = exIndex => {
-    let idx = "";
-    idx = exIndex[Math.floor(Math.random() * exIndex.length)];
-
-    return idx;
+    return randomElement;
   };
 
-  // 3- Creo la función onLoad y dentro de ella creo una variable para juntarlo con el HTML.
-  const onLoad = () => {
-    let gen = document.querySelector("#excuse");
+  let stringGenerator =
+    getRandomElement(who) +
+    " " +
+    getRandomElement(action) +
+    " " +
+    getRandomElement(what) +
+    " " +
+    getRandomElement(when);
 
-    // 4- A la variable de antes le añado los arrays creados al inicio para que se junten y generen la excusa
-    gen.innerHTML =
-      excuseGen(who) +
-      " " +
-      excuseGen(action) +
-      " " +
-      excuseGen(what) +
-      " " +
-      excuseGen(when);
-  };
-  window.onLoad = onLoad();
+  document.querySelector("#excuse").innerHTML = stringGenerator;
 };
